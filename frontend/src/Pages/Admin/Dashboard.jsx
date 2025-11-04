@@ -15,7 +15,7 @@ const kpiData = [
 const navItems = [
     { name: 'Dashboard', icon: HomeIcon, href: '#', current: true },
     { name: 'Job Listings', icon: BriefcaseIcon, href: '#', current: false },
-    { name: 'Candidates', icon: UsersIcon, href: '#', current: false },
+    { name: 'Services', icon: UsersIcon, href: '#', current: false },
     { name: 'Clients & Companies', icon: BuildingOffice2Icon, href: '#', current: false },
     { name: 'Analytics & Reports', icon: ChartBarIcon, href: '#', current: false },
     { name: 'Settings', icon: Cog6ToothIcon, href: '#', current: false },

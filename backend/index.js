@@ -6,7 +6,9 @@ import cors from "cors";
 const PORT = process.env.PORT || 5000;
 import contactRoute from './src/routes/messageRoute.js'
 import adminRoute from './src/routes/adminRoutes.js'
-import serviceRoute from './src/routes/serviceRoutes.js'
+import serviceRoute from './src/routes/serviceRoutes.js';
+import company from './src/routes/company.js';
+import client from './src/routes/client.js'
 import connectDB from "./src/configs/db.js";
 
 
