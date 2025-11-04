@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 const PORT = process.env.PORT || 5000;
 import contactRoute from './src/routes/messageRoute.js'
+import adminRoute from './src/routes/adminRoutes.js'
+import serviceRoute from './src/routes/serviceRoutes.js'
 import connectDB from "./src/configs/db.js";
 
 
@@ -20,6 +22,8 @@ app.use(cors({
 }))
 
 app.use("/api/contact",contactRoute);
+app.use("/api/auth",adminRoute);
+app.use("/api/service",serviceRoute);
 
 
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

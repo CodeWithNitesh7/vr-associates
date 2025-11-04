@@ -9,12 +9,12 @@ export default function Contact() {
   });
   const [status, setStatus] = useState("");
 
-  // 📝 Handle Input Changes
+  // Handle Input Changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // 🚀 Handle Form Submit
+  // Handle Form Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -22,7 +22,7 @@ export default function Contact() {
       setStatus(response.message);
       setFormData({ name: "", email: "", message: "" });
 
-      // 🕒 Clear status message after 3 seconds
+      // Clear status message after 3 seconds
       setTimeout(() => {
         setStatus("");
       }, 3000);
@@ -30,7 +30,7 @@ export default function Contact() {
       console.error("Error submitting contact form:", error);
       setStatus("Something went wrong. Please try again later.");
 
-      // 🕒 Clear error message too after 3 seconds
+      // Clear error message too after 3 seconds
       setTimeout(() => {
         setStatus("");
       }, 3000);
@@ -80,7 +80,7 @@ export default function Contact() {
         </button>
       </form>
 
-      {/* 💬 Status Message */}
+      {/* Status Message */}
       {status && <p className="mt-4 text-green-600 font-semibold">{status}</p>}
     </section>
   );
