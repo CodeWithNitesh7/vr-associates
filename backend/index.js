@@ -10,7 +10,7 @@ import serviceRoute from './src/routes/serviceRoutes.js';
 import company from './src/routes/company.js';
 import client from './src/routes/client.js'
 import connectDB from "./src/configs/db.js";
-
+import allServicesRoute from "./src/routes/allServicesRoute.js";
 
 const app = express();
 connectDB()
@@ -26,6 +26,7 @@ app.use(cors({
 app.use("/api/contact",contactRoute);
 app.use("/api/auth",adminRoute);
 app.use("/api/service",serviceRoute);
+app.use("/api/allServices",allServicesRoute);
 
 
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
