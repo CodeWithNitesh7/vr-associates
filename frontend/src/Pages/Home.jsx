@@ -13,7 +13,7 @@ import Footer from "../Components/Footer";
 
 export default function Home() {
     return (
-        <div className="bg-gradient-to-br from-white via-blue-50 to-blue-100 text-gray-900">
+        <div className="bg-linear-to-br from-white via-blue-50 to-blue-100 text-gray-900">
             <Navbar />
             <HeroSection />
             {/* <NewHeroSection/> */}
