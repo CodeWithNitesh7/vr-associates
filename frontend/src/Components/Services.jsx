@@ -11,7 +11,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import Dashboard from "../Pages/DashboardComponents/Dashboard";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 import axios from "axios";
 
 const services = [
@@ -27,35 +27,19 @@ const services = [
     desc: "Flexible, on-demand workforce solutions to meet urgent project deadlines and fluctuating business needs.",
     route: "/contractsStaff",
   },
-  {
-    icon: <Crown size={40} />,
-    title: "Executive Search",
-    desc: "Targeted search for visionary leaders and executives who will shape your company’s future.",
-    route: "/ExecutiveSerch",
-  },
-  {
-    icon: <Key size={40} />,
-    title: "Equipment & Talent Rentals",
-    desc: "Flexible rental services for essential operational equipment and specialized skilled professionals.",
-    route: "/rentals",
-  },
+
   {
     icon: <Megaphone size={40} />,
     title: "Digital Marketing Strategy",
     desc: "Comprehensive PPC, SMM, and content strategies to maximize brand visibility and ROI.",
-    route: "/digitalMarketing",
+    route: "/digital-marketing",
   },
-  {
-    icon: <Search size={40} />,
-    title: "SEO Optimization",
-    route: "/seo",
-    desc: "In-depth audits and strategies to enhance organic visibility and achieve top search rankings.",
-  },
+
   {
     icon: <Code size={40} />,
     title: "Web & App Development",
     desc: "Custom, scalable, and high-performance web/mobile applications built for growth.",
-    route: "/webAndapp",
+    route: "/web-and-app",
   },
   {
     icon: <Cloud size={40} />,
@@ -65,7 +49,7 @@ const services = [
   },
   {
     icon: <ShieldCheck size={40} />,
-    title: "Cybersecurity & QA Testing",
+    title: "InfraStructure and IOT",
     desc: "Protecting digital assets and ensuring flawless performance through rigorous testing.",
     route: "/cyberSecurity",
   },
@@ -76,10 +60,10 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="py-16 sm:py-20 lg:py-28 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden"
+      className="py-16 sm:py-20 lg:py-28 bg-linear-to-br from-gray-50 to-white relative overflow-hidden"
     >
       {/* Decorative Glow Background */}
-      <div className="absolute top-0 right-0 h-[24rem] w-[24rem] bg-sky-100 rounded-full blur-3xl opacity-50 translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+      <div className="absolute top-0 right-0 h-96 w-[24rem] bg-sky-100 rounded-full blur-3xl opacity-50 translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
 
       {/* Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">

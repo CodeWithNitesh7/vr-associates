@@ -42,12 +42,13 @@ const permanentJobs = [
 
 export default function Permanents() {
     return (
+        
         <div className="min-h-screen bg-gray-50 p-8">
             <div className="max-w-4xl mx-auto">
 
                 {/* Header Section */}
                 <header className="text-center mb-10">
-                    <h1 className="text-4xl font-extrabold text-blue-800 sm:text-5xl">
+                    <h1 className="text-4xl font-extrabold text-sky-500 sm:text-5xl">
                         Permanents Jobs Openings
                     </h1>
                     <p className="mt-3 text-xl text-gray-600">
@@ -60,7 +61,7 @@ export default function Permanents() {
                     {permanentJobs.map((job) => (
                         <div
                             key={job.id}
-                            className="bg-white p-6 rounded-lg shadow-xl hover:shadow-2xl transition duration-300 border-l-4 border-blue-500"
+                            className="bg-white p-6 rounded-lg shadow-xl hover:shadow-2xl transition duration-300 border-l-4 border-sky-500"
                         >
                             <div className="flex justify-between items-start mb-3">
 
@@ -76,7 +77,7 @@ export default function Permanents() {
 
                                 {/* Hot Job Badge (Conditional) */}
                                 {job.isHot && (
-                                    <span className="inline-flex items-center px-3 py-1 text-sm font-bold bg-red-100 text-red-800 rounded-full animate-pulse">
+                                    <span className="inline-flex items-center px-3 py-1 text-sm font-bold bg-sky-100 text-sky-800 rounded-full animate-pulse">
                                         Urgent Openings
                                     </span>
                                 )}
@@ -103,7 +104,7 @@ export default function Permanents() {
                             </div>
 
                             {/* Apply Button */}
-                            <button className="mt-5 w-full bg-blue-600 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition duration-150 shadow-md">
+                            <button className="mt-5 w-full bg-sky-600 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition duration-150 shadow-md">
                                 Apply Now
                             </button>
                         </div>
@@ -113,7 +114,7 @@ export default function Permanents() {
                 {/* Footer Note */}
                 <div className="text-center mt-12 pt-6 border-t border-gray-200">
                     <p className="text-md text-sky-500">
-                        VR Associates 
+                        VR Associates
                     </p>
                 </div>
 

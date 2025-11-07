@@ -51,8 +51,8 @@ export default function ContractStaffing() {
 
                 {/* Header Section */}
                 <header className="text-center mb-10">
-                    <h1 className="text-4xl font-extrabold text-orange-700 sm:text-5xl">
-                        📅 **Contract Staffing Opportunities**
+                    <h1 className="text-4xl font-extrabold text-sky-700 sm:text-5xl">
+                        Contract Staffing Opportunities
                     </h1>
                     <p className="mt-3 text-xl text-gray-600">
                         Short-term, high-impact roles available across various industries.
@@ -64,7 +64,7 @@ export default function ContractStaffing() {
                     {contractJobs.map((job) => (
                         <div
                             key={job.id}
-                            className="bg-gray-50 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 border-l-4 border-orange-500"
+                            className="bg-gray-50 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 border-l-4 border-sky-500"
                         >
                             <div className="flex justify-between items-start mb-3">
 
@@ -73,15 +73,15 @@ export default function ContractStaffing() {
                                     <h2 className="text-2xl font-bold text-gray-900">
                                         {job.title}
                                     </h2>
-                                    <p className="text-md text-orange-600 mt-1">
+                                    <p className="text-md text-sky-600 mt-1">
                                         {job.company}
                                     </p>
                                 </div>
 
                                 {/* Urgent Badge (Conditional) */}
                                 {job.isUrgent && (
-                                    <span className="inline-flex items-center px-3 py-1 text-sm font-bold bg-red-500 text-white rounded-full shadow-md">
-                                        ⏰ URGENT HIRE
+                                    <span className="inline-flex items-center px-3 py-1 text-sm font-bold bg-sky-500 text-white rounded-full shadow-md">
+                                         URGENT HIRE
                                     </span>
                                 )}
                             </div>
@@ -89,13 +89,13 @@ export default function ContractStaffing() {
                             {/* Key Details (Duration and Rate) */}
                             <div className="flex flex-wrap gap-x-6 gap-y-2 text-gray-700 text-sm mb-4 border-t pt-4 border-gray-200">
                                 <span className="flex items-center">
-                                    <span className="text-orange-500 mr-2">🗓️</span> **Duration:** {job.duration}
+                                    <span className="text-sky-500 mr-2">🗓️</span> Duration: {job.duration}
                                 </span>
                                 <span className="flex items-center">
-                                    <span className="text-orange-500 mr-2">💲</span> **Compensation:** {job.rate}
+                                    <span className="text-sky-500 mr-2">💲</span> Compensation: {job.rate}
                                 </span>
                                 <span className="flex items-center">
-                                    <span className="text-orange-500 mr-2">📍</span> **Location:** {job.location}
+                                    <span className="text-sky-500 mr-2">📍</span> Location: {job.location}
                                 </span>
                             </div>
 
@@ -110,7 +110,7 @@ export default function ContractStaffing() {
                             </div>
 
                             {/* Apply Button */}
-                            <button className="mt-5 w-full bg-orange-600 text-white py-2.5 rounded-lg font-semibold hover:bg-orange-700 transition duration-150 shadow-lg">
+                            <button className="mt-5 w-full bg-sky-600 text-white py-2.5 rounded-lg font-semibold hover:bg-sky-700 transition duration-150 shadow-lg">
                                 Apply for this Contract Role
                             </button>
                         </div>

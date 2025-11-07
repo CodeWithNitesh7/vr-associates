@@ -1,10 +1,20 @@
 import React from "react";
-import { Mail, Phone, MapPin, Facebook, Linkedin, Twitter, ArrowRight } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Linkedin,
+  Twitter,
+  ArrowRight,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate(); // ✅ fixed spelling (was 'naviagte')
 
-  // Define Navigation Links
+  // Quick navigation links
   const quickLinks = [
     { name: "Home", href: "#home" },
     { name: "About Us", href: "#about" },
@@ -13,16 +23,19 @@ export default function Footer() {
     { name: "Blog", href: "#blog" },
   ];
 
+  // Service navigation links
   const serviceLinks = [
-    { name: "IT Staffing Solutions", href: "#services/it" },
-    { name: "Contract Hiring", href: "#services/contract" },
-    { name: "Permanent Placement", href: "#services/permanent" },
-    { name: "Executive Search", href: "#services/executive" },
-    { name: "Industry Specialization", href: "#services/industry" },
+    { name: "Web Development", path: "/web" },
+    { name: "Digital Marketing", path: "/digital-marketing" },
+    { name: "App Development", path: "/app" },
+    { name: "Contract Hiring", path: "/contract-staff" },
+    { name: "Permanent Placement", path: "/permanents" },
+    { name: "Cloud Solutions", path: "/cloud" },
+    { name: "Infrastructure & IoT", path: "/iot" },
   ];
 
-  // Component for Link Lists
-  const FooterLinkList = ({ title, links }) => (
+  // Component for each link section
+  const FooterLinkList = ({ title, links, isInternal }) => (
     <div>
       <h4 className="text-lg font-bold text-gray-100 mb-6 border-b-2 border-sky-500/50 pb-2 inline-block">
         {title}
@@ -30,13 +43,23 @@ export default function Footer() {
       <ul className="space-y-4">
         {links.map((link, index) => (
           <li key={index}>
-            <a
-              href={link.href}
-              className="text-gray-300 hover:text-teal-400 transition-colors duration-200 flex items-center text-sm"
-            >
-              <ArrowRight className="w-3 h-3 mr-2 opacity-70" />
-              {link.name}
-            </a>
+            {isInternal ? (
+              <button
+                onClick={() => navigate(link.path)}
+                className="text-gray-300 hover:text-teal-400 transition-colors duration-200 flex items-center text-sm"
+              >
+                <ArrowRight className="w-3 h-3 mr-2 opacity-70" />
+                {link.name}
+              </button>
+            ) : (
+              <a
+                href={link.href}
+                className="text-gray-300 hover:text-teal-400 transition-colors duration-200 flex items-center text-sm"
+              >
+                <ArrowRight className="w-3 h-3 mr-2 opacity-70" />
+                {link.name}
+              </a>
+            )}
           </li>
         ))}
       </ul>
@@ -46,65 +69,78 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white pt-20 pb-8 border-t-4 border-sky-500">
       <div className="container mx-auto px-6 lg:px-8">
-
-        {/* --- 1. Main Grid: Logo, Links, Contact --- */}
+        {/* --- Main Grid: Branding, Links, Contact --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-gray-800">
-
-          {/* Column 1: Branding and Description (Spans 2 columns on large screens) */}
+          {/* Branding */}
           <div className="lg:col-span-2 space-y-4">
             <h3 className="text-3xl font-extrabold text-white">
-              VR<span className="text-teal-400"> Associates</span>
+              VR<span className="text-sky-500"> Associates</span>
             </h3>
             <p className="text-gray-400 max-w-sm text-sm">
-              We are a premier global staffing and recruitment agency, dedicated to connecting ambitious companies with exceptional, high-impact talent.
+              We are a global recruitment & staffing agency connecting
+              businesses with high-impact professionals to drive growth and
+              innovation.
             </p>
 
-            {/* Social Media Icons */}
+            {/* Social Icons */}
             <div className="flex space-x-4 pt-4">
-              <a href="#" className="text-gray-500 hover:text-indigo-400 transition-colors duration-300">
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 hover:text-indigo-400 transition-colors duration-300"
+              >
                 <Linkedin size={24} />
               </a>
-              <a href="#" className="text-gray-500 hover:text-teal-400 transition-colors duration-300">
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 hover:text-teal-400 transition-colors duration-300"
+              >
                 <Twitter size={24} />
               </a>
-              <a href="#" className="text-gray-500 hover:text-indigo-400 transition-colors duration-300">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 hover:text-indigo-400 transition-colors duration-300"
+              >
                 <Facebook size={24} />
               </a>
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
+          {/* Quick Links */}
           <FooterLinkList title="Quick Links" links={quickLinks} />
 
-          {/* Column 3: Services */}
-          <FooterLinkList title="Our Services" links={serviceLinks} />
+          {/* Services */}
+          <FooterLinkList title="Our Services" links={serviceLinks} isInternal />
 
-          {/* Column 4: Contact Information */}
+          {/* Contact Info */}
           <div className="space-y-4">
             <h4 className="text-lg font-bold text-gray-100 mb-6 border-b-2 border-teal-500/50 pb-2 inline-block">
               Get in Touch
             </h4>
-
             <p className="flex items-start text-sm text-gray-400">
-              <MapPin size={18} className="text-teal-500 mr-3 mt-1 flex-shrink-0" />
-              123 Talent Lane, Global Tech Hub, CA 90210
+              <MapPin size={18} className="text-teal-500 mr-3 mt-1" />
+              B-20, H-160, BSI Business Park, Sector-63, Noida, India
             </p>
             <p className="flex items-center text-sm text-gray-400">
               <Phone size={18} className="text-teal-500 mr-3" />
-              +1 (555) 123-4567
+              +91 9369518210
             </p>
             <p className="flex items-center text-sm text-gray-400">
               <Mail size={18} className="text-teal-500 mr-3" />
-              contact@vrassociate.com
+              info@vrassociates.io
             </p>
           </div>
-
         </div>
 
-        {/* --- 2. Bottom Bar: Copyright & Legal --- */}
+        {/* --- Bottom Bar --- */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 text-sm text-gray-500">
           <p className="mb-4 md:mb-0">
-            &copy; {currentYear} **VR Associates**. All Rights Reserved.
+            © {currentYear} <span className="font-semibold text-white">VR Associates</span>. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <a href="#privacy" className="hover:text-teal-400 transition-colors">
@@ -115,7 +151,6 @@ export default function Footer() {
             </a>
           </div>
         </div>
-
       </div>
     </footer>
   );

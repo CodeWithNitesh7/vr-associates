@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowRightIcon } from '@heroicons/react/24/outline'; // Using a clean icon
-
+import hero from '../assets/hero_section.png'
 export default function HeroSection() {
   return (
     <section
@@ -56,7 +56,7 @@ export default function HeroSection() {
           {/* Stylized Image Placeholder Card */}
           <div className="w-full max-w-sm lg:max-w-md bg-white p-6 rounded-3xl shadow-2xl border border-gray-100 transform transition-all duration-500 hover:rotate-1 hover:shadow-3xl">
             <img
-              src="https://placehold.co/600x400/D0D7FF/1E293B?text=Professional+Consulting+Illustration"
+              src={hero}
               alt="Professional Consulting Illustration"
               className="w-full h-auto rounded-2xl object-cover"
             />

@@ -5,37 +5,37 @@ const projects = [
     {
         id: 1,
         name: 'Invoicely - Billing Platform',
-        type: 'Web Application',
+        type: 'App (android & ios)',
         techStack: 'React, Node.js, PostgreSQL',
         description: 'A secure, cloud-based invoicing and expense tracking system for SMEs.',
-        imageUrl: 'https://via.placeholder.com/600x400?text=Web+App:+Invoicing', // Replace with actual image URL
+        imageUrl: 'https://via.placeholder.com/600x400?text=Web+App:+Invoicing',
         isFeatured: true,
     },
     {
         id: 2,
         name: 'FitTrack Pro',
-        type: 'Mobile App (iOS/Android)',
+        type: 'App (android & ios) ',
         techStack: 'React Native, Firebase',
         description: 'A cross-platform fitness tracker focusing on real-time workout synchronization.',
-        imageUrl: 'https://via.placeholder.com/600x400?text=Mobile+App:+Fitness', // Replace with actual image URL
+        imageUrl: 'https://via.placeholder.com/600x400?text=Mobile+App:+Fitness',
         isFeatured: false,
     },
     {
         id: 3,
         name: 'Internal CRM Dashboard',
-        type: 'Web Application',
+        type: 'App (android & ios)',
         techStack: 'Vue.js, Tailwind CSS, REST API',
         description: 'Custom internal dashboard for managing client relations and sales pipelines.',
-        imageUrl: 'https://via.placeholder.com/600x400?text=Web+App:+CRM', // Replace with actual image URL
+        imageUrl: 'https://via.placeholder.com/600x400?text=Web+App:+CRM',
         isFeatured: true,
     },
     {
         id: 4,
         name: 'LocalConnect',
-        type: 'Mobile App (iOS)',
+        type: 'App (android & ios)',
         techStack: 'Swift, Backend Microservices',
         description: 'Location-based discovery app for local events and services.',
-        imageUrl: 'https://via.placeholder.com/600x400?text=Mobile+App:+Local', // Replace with actual image URL
+        imageUrl: 'https://via.placeholder.com/600x400?text=Mobile+App:+Local',
         isFeatured: false,
     },
 ];
@@ -51,8 +51,8 @@ export default function WebAppDevelopment() {
 
                 {/* Header Section */}
                 <header className="text-center mb-12">
-                    <h1 className="text-4xl font-extrabold text-purple-700 sm:text-5xl">
-                        💻 **Our Development Portfolio** 📱
+                    <h1 className="text-4xl font-extrabold text-sky-600 sm:text-5xl">
+                        Our App (Android and ios )
                     </h1>
                     <p className="mt-3 text-xl text-gray-600">
                         Explore the high-quality web and mobile applications built by our expert teams.
@@ -62,7 +62,7 @@ export default function WebAppDevelopment() {
                 {/* Featured Projects Section */}
                 {featuredProjects.length > 0 && (
                     <>
-                        <h2 className="text-3xl font-bold text-purple-600 mb-6 border-b pb-2">
+                        <h2 className="text-3xl font-bold text-sky-600 mb-6 border-b pb-2">
                             ⭐ Featured Projects
                         </h2>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
@@ -117,7 +117,7 @@ const ProjectCard = ({ project }) => (
             {/* Tech Stack */}
             <div className="mt-3 pt-3 border-t border-gray-100">
                 <p className="text-xs font-medium text-gray-500 mb-1">Tech Stack:</p>
-                <p className="text-sm font-mono text-purple-600">{project.techStack}</p>
+                <p className="text-sm font-mono text-sky-600">{project.techStack}</p>
             </div>
         </div>
     </div>

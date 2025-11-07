@@ -1,120 +1,253 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from "react";
+import { CheckCircleIcon, ArrowRightIcon, StarIcon } from "@heroicons/react/24/solid";
 
-export default function DigitalMarketing() {
-    // 1. State to hold the data
-    const [stats, setStats] = useState({
-        numberOfPlans: 0,
-        numberOfClients: 0,
-        clientNames: [],
-        loading: true, // Loading state to show user feedback
-        error: null,   // Error state for handling API failures
+const plans = [
+    {
+        name: "Basic",
+        price: "$299/mo",
+        tagline: "Perfect for startups looking to build a digital presence.",
+        features: [
+            "Initial SEO Audit",
+            "Monthly Content Strategy (4 ideas)",
+            "Social Media Management (1 Platform)",
+            "Standard Monthly Reporting",
+            "Email Support (48-hour response)",
+        ],
+        color: "border-blue-500",
+        bg: "bg-blue-50",
+    },
+    {
+        name: "Advanced",
+        price: "$799/mo",
+        tagline: "Accelerate growth with multi-channel marketing excellence.",
+        features: [
+            "Comprehensive SEO & Keyword Research",
+            "High-Value Content Creation (8 blogs/posts)",
+            "Social Media Management (3 Platforms)",
+            "Dedicated Account Manager",
+            "Advanced Conversion Rate Optimization (CRO)",
+            "Priority Support (12-hour response)",
+        ],
+        color: "border-indigo-600",
+        bg: "bg-indigo-50",
+        isPopular: true,
+    },
+    {
+        name: "Premium",
+        price: "$1499/mo",
+        tagline: "Enterprise-grade growth with full-funnel automation.",
+        features: [
+            "Full-Scale Technical & On-Page SEO",
+            "Unlimited Content Strategy & Creation",
+            "Omnichannel Marketing & Paid Ads Management",
+            "Bi-Weekly Strategy Calls",
+            "Custom AI/Automation Integration",
+            "24/7 VIP Support",
+        ],
+        color: "border-pink-600",
+        bg: "bg-pink-50",
+    },
+];
+
+export default function SubscribeForm() {
+    const [selectedPlan, setSelectedPlan] = useState(plans[1].name);
+    const [formData, setFormData] = useState({
+        fullName: "",
+        email: "",
+        phone: "",
+        company: "",
+        paymentMethod: "Credit Card",
     });
 
-    // 2. Simulate fetching data from an API using useEffect
-    useEffect(() => {
-        // This function simulates an API call (e.g., using fetch or axios)
-        const fetchMarketingData = async () => {
-            try {
-                // Simulate network delay
-                await new Promise(resolve => setTimeout(resolve, 1500));
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
-                // --- Simulated API Response Data ---
-                const apiData = {
-                    plans: 7, // New dynamic plan count
-                    clientsCount: 18, // New dynamic client count
-                    clientList: ["TechNova Solutions", "Global Commerce Inc.", "FutureStream Media", "Elite Fitness Co.", "SmartHome Systems", "GreenEarth Organics"]
-                };
-                // -----------------------------------
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Subscription submitted:", { plan: selectedPlan, data: formData });
+        alert(`Thank you for choosing the ${selectedPlan} plan! We'll be in touch soon.`);
+    };
 
-                // Update the state with fetched data
-                setStats({
-                    numberOfPlans: apiData.plans,
-                    numberOfClients: apiData.clientsCount,
-                    clientNames: apiData.clientList,
-                    loading: false, // Data successfully loaded
-                    error: null,
-                });
-
-            } catch (err) {
-                // Handle any errors during fetching
-                setStats(prevStats => ({
-                    ...prevStats,
-                    loading: false,
-                    error: "डेटा लाने में समस्या आई। कृपया बाद में प्रयास करें।",
-                }));
-                console.error("Fetching error:", err);
-            }
-        };
-
-        fetchMarketingData();
-    }, []); // Empty dependency array means this runs ONCE after initial render
-
-    // --- Conditional Rendering based on state ---
-
-    if (stats.loading) {
-        return (
-            <div className="max-w-4xl mx-auto p-8 text-center bg-white shadow-lg rounded-lg my-10">
-                <p className="text-lg text-indigo-600 font-medium animate-pulse">डेटा लोड हो रहा है... कृपया प्रतीक्षा करें।</p>
-                {/*  */}
-            </div>
-        );
-    }
-
-    if (stats.error) {
-        return (
-            <div className="max-w-4xl mx-auto p-8 bg-red-100 border border-red-400 text-red-700 rounded-lg my-10">
-                <h3 className="font-bold">त्रुटि (Error)</h3>
-                <p>{stats.error}</p>
-            </div>
-        );
-    }
-
-    // --- Main Display (When loading is false and no error) ---
     return (
-        <div className="max-w-4xl mx-auto p-6 bg-white shadow-xl rounded-lg my-10 font-sans">
+        <div className="min-h-screen bg-linear-to-br from-gray-50 via-white to-indigo-50 py-16 px-4 sm:px-10 font-inter">
+            <div className="max-w-6xl mx-auto">
+                {/* Header Section */}
+                <header className="text-center mb-16">
+                    <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight">
+                        Choose Your{" "}
+                        <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-indigo-800">
+                            Digital Marketing
+                        </span>{" "}
+                        Plan
+                    </h1>
+                    <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                        Power your growth with tailored marketing strategies designed to scale your brand visibility and ROI.
+                    </p>
+                </header>
 
-            <h1 className="text-3xl font-bold text-indigo-700 mb-6 border-b pb-2">
-                📊 गतिशील डिजिटल मार्केटिंग आँकड़े
-            </h1>
+                {/* Plan Selection */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    {plans.map((plan) => (
+                        <div
+                            key={plan.name}
+                            onClick={() => setSelectedPlan(plan.name)}
+                            className={`relative p-8 rounded-2xl border-4 transition-all duration-300 cursor-pointer backdrop-blur-md
+              ${plan.bg} ${plan.color} 
+              ${selectedPlan === plan.name
+                                    ? "shadow-2xl ring-4 ring-offset-4 ring-sky-500 scale-105"
+                                    : "hover:shadow-xl hover:scale-[1.02]"
+                                }`}
+                        >
+                            {plan.isPopular && (
+                                <div className="absolute -top-3 right-5 flex items-center bg-sky-600 text-white text-xs px-3 py-1 rounded-full font-medium shadow-md">
+                                    <StarIcon className="h-4 w-4 mr-1" /> Most Popular
+                                </div>
+                            )}
+                            <div className="flex items-center justify-between mb-4">
+                                <h2 className="text-3xl font-bold text-gray-900">{plan.name}</h2>
+                                <p className="text-3xl font-extrabold text-indigo-700">{plan.price}</p>
+                            </div>
+                            <p className="text-gray-600 italic mb-6">{plan.tagline}</p>
 
-            {/* प्लान्स सेक्शन */}
-            <div className="p-5 bg-indigo-50 border-l-4 border-indigo-500 rounded-md mb-6 transition duration-300 hover:shadow-md">
-                <h2 className="text-xl font-semibold text-indigo-800 mb-1">
-                    📈 उपलब्ध डिजिटल मार्केटिंग प्लान्स
-                </h2>
-                <p className="text-gray-700 text-lg">
-                    आपके पास **
-                    <span className="text-4xl font-extrabold text-indigo-600 ml-2">
-                        {stats.numberOfPlans}
-                    </span>** प्लान्स हैं।
-                </p>
-            </div>
+                            <ul className="space-y-3">
+                                {plan.features.map((feature, i) => (
+                                    <li key={i} className="flex items-start text-gray-700">
+                                        <CheckCircleIcon className="w-5 h-5 text-green-500 mr-2 mt-0.5" />
+                                        <span>{feature}</span>
+                                    </li>
+                                ))}
+                            </ul>
 
-            {/* क्लाइंट्स सेक्शन */}
-            <div className="p-5 bg-green-50 border-l-4 border-green-500 rounded-md transition duration-300 hover:shadow-md">
-                <h2 className="text-xl font-semibold text-green-800 mb-2">
-                    🤝 कुल डिजिटल मार्केटिंग क्लाइंट्स
-                </h2>
-                <p className="text-gray-700 text-lg mb-3">
-                    आपने **
-                    <span className="text-4xl font-extrabold text-green-600 mr-2">
-                        {stats.numberOfClients}
-                    </span>** क्लाइंट्स को सेवा प्रदान की है।
-                </p>
+                            <button
+                                type="button"
+                                onClick={() => setSelectedPlan(plan.name)}
+                                className={`mt-8 w-full py-3 rounded-lg font-semibold transition-all duration-300 
+                ${selectedPlan === plan.name
+                                        ? "bg-indigo-600 text-white shadow-lg shadow-indigo-400/50 hover:bg-sky-700"
+                                        : "bg-white text-sky-600 border border-sky-600 hover:bg-sky-50"
+                                    }`}
+                            >
+                                {selectedPlan === plan.name ? "Selected Plan" : "Select Plan"}
+                            </button>
+                        </div>
+                    ))}
+                </div>
 
-                {/* क्लाइंट्स के नाम की सूची */}
-                {stats.numberOfClients > 0 && (
-                    <>
-                        <p className="text-sm font-medium text-gray-600 mt-4 border-t pt-2">सर्वाइव किए गए क्लाइंट्स:</p>
-                        <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
-                            {stats.clientNames.map((name, index) => (
-                                <li key={index} className="bg-white text-gray-800 p-2 rounded text-sm shadow-sm border border-gray-200 truncate">
-                                    {name}
-                                </li>
-                            ))}
-                        </ul>
-                    </>
-                )}
+                {/* Checkout Form */}
+                <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-10 border border-gray-100">
+                    <h2 className="text-3xl font-bold text-gray-900 mb-8 border-b pb-3">
+                        Checkout —{" "}
+                        <span className="text-indigo-700 font-extrabold">{selectedPlan}</span> Plan
+                    </h2>
+
+                    <form onSubmit={handleSubmit} className="space-y-8">
+                        {/* Contact Info */}
+                        <section>
+                            <h3 className="text-xl font-semibold text-gray-800 mb-4">1. Contact Information</h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <input
+                                    type="text"
+                                    name="fullName"
+                                    value={formData.fullName}
+                                    onChange={handleChange}
+                                    placeholder="Full Name *"
+                                    required
+                                    className="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                                />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    placeholder="Business Email *"
+                                    required
+                                    className="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                                />
+                                <input
+                                    type="tel"
+                                    name="phone"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    placeholder="Phone Number *"
+                                    required
+                                    className="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                                />
+                                <input
+                                    type="text"
+                                    name="company"
+                                    value={formData.company}
+                                    onChange={handleChange}
+                                    placeholder="Company / Business Name *"
+                                    required
+                                    className="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                                />
+                            </div>
+                        </section>
+
+                        {/* Payment Method */}
+                        <section>
+                            <h3 className="text-xl font-semibold text-gray-800 mb-4">2. Payment Method</h3>
+                            <div className="flex flex-wrap gap-6">
+                                {["Credit Card", "PayPal", "Invoice"].map((method) => (
+                                    <label
+                                        key={method}
+                                        className={`flex items-center gap-2 px-4 py-2 border rounded-lg cursor-pointer transition
+                    ${formData.paymentMethod === method
+                                                ? "border-indigo-600 bg-indigo-50 text-indigo-700"
+                                                : "border-gray-300 text-gray-700 hover:border-indigo-300"
+                                            }`}
+                                    >
+                                        <input
+                                            type="radio"
+                                            name="paymentMethod"
+                                            value={method}
+                                            checked={formData.paymentMethod === method}
+                                            onChange={handleChange}
+                                            className="form-radio text-indigo-600"
+                                        />
+                                        {method}
+                                    </label>
+                                ))}
+                            </div>
+                            <p className="mt-2 text-sm text-gray-500">
+                                You’ll enter your payment details securely on the next step.
+                            </p>
+                        </section>
+
+                        {/* Terms */}
+                        <section className="pt-4 border-t">
+                            <label className="flex items-start">
+                                <input
+                                    type="checkbox"
+                                    required
+                                    className="h-5 w-5 text-indigo-600 rounded mt-1 focus:ring-indigo-500"
+                                />
+                                <span className="ml-3 text-gray-700 text-sm">
+                                    I agree to the{" "}
+                                    <a href="#" className="text-indigo-600 hover:underline font-medium">
+                                        Terms of Service
+                                    </a>{" "}
+                                    and{" "}
+                                    <a href="#" className="text-indigo-600 hover:underline font-medium">
+                                        Privacy Policy
+                                    </a>{" "}
+                                    of VR Associates.
+                                </span>
+                            </label>
+                        </section>
+
+                        {/* Submit */}
+                        <button
+                            type="submit"
+                            className="w-full flex justify-center items-center gap-3 py-3 px-6 rounded-lg text-lg font-medium
+              text-white bg-linear-to-r from-indigo-600 to-indigo-800 hover:from-indigo-700 hover:to-indigo-900 
+              shadow-lg hover:shadow-indigo-500/40 transition-all duration-300"
+                        >
+                            Subscribe to {selectedPlan} Plan <ArrowRightIcon className="h-5 w-5" />
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     );
