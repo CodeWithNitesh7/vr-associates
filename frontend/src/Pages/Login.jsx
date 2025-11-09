@@ -15,7 +15,7 @@ export default function Login() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100">
+        <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-blue-100">
             <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
                 {/* Logo */}
                 <div className="flex flex-col items-center mb-8">

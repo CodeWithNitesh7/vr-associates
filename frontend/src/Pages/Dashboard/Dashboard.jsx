@@ -16,6 +16,13 @@ import Doverview from "./DashboardPages/Doverview";
 export default function Dashboard() {
     const [activePage, setActivePage] = useState("dashboard");
 
+    const handleLogout = () => {
+  sessionStorage.removeItem("adminToken");
+  sessionStorage.removeItem("adminInfo");
+  window.location.href = "/admin-login";
+};
+
+
     // ✅ Function to render selected content dynamically
     const renderContent = () => {
         switch (activePage) {
@@ -34,7 +41,7 @@ export default function Dashboard() {
             case "marketing":
                 return <Dmarketing />;
             case "leads":
-                return <leads />;
+                return <ContractLeads />;
             default:
                 return (
                     // <div className="p-10 text-gray-800">

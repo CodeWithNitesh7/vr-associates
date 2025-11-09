@@ -108,7 +108,7 @@
 //                             <ul className="space-y-3">
 //                                 {plan.features.map((feature, index) => (
 //                                     <li key={index} className="flex items-start text-gray-700">
-//                                         <CheckCircleIcon className="flex-shrink-0 w-6 h-6 text-green-500 mr-2 mt-0.5" />
+//                                         <CheckCircleIcon className="shrink-0 w-6 h-6 text-green-500 mr-2 mt-0.5" />
 //                                         <span dangerouslySetInnerHTML={{ __html: feature }}></span>
 //                                     </li>
 //                                 ))}
@@ -239,7 +239,7 @@
 import React from 'react'
 
 export default function SubscribeForm() {
-  return (
-    <div>SubscribeForm</div>
-  )
+    return (
+        <div>SubscribeForm</div>
+    )
 }

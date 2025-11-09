@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { EnvelopeIcon, LockClosedIcon, BuildingOffice2Icon } from '@heroicons/react/24/outline'; // Importing icons, including one for the placeholder logo
+import { EnvelopeIcon, LockClosedIcon, BuildingOffice2Icon } from '@heroicons/react/24/outline'; 
+import { adminLogin } from "../api/adminApi.js";
 
 export default function Login() {
     const [formData, setFormData] = useState({ email: "", password: "" });
@@ -11,44 +12,31 @@ export default function Login() {
         if (error) setError(null); // error handler 
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsLoading(true);
-        setError(null); // Clear previous errors
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsLoading(true);
+  setError(null);
 
-        try {
-            // Simulate an API call
-            console.log("Attempting login with:", formData);
-            await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
+  try {
+    const res = await adminLogin(formData); // Call backend API
+    console.log("Login response:", res);
 
-            // 🔹 Replace with your actual API call
-            // const response = await axios.post("/api/auth/login", formData);
-            // if (response.data.success) {
-            //     console.log("Login successful!");
-            //     // Redirect or update auth state
-            // } else {
-            //     setError(response.data.message || "Login failed. Please check your credentials.");
-            // }
+    // Store token & user info
+    sessionStorage.setItem("adminToken", res.token);
+    sessionStorage.setItem("adminInfo", JSON.stringify(res.owner));
 
-            if (formData.email === "user@example.com" && formData.password === "password123") {
-                console.log("Login successful!");
-                // Using console log instead of alert for better practice in production apps
-                console.log("Login Successful! (Demo Credentials)");
-                // 🚀 In a real app, you'd redirect here or set a user context
-            } else {
-                setError("Invalid email or password.");
-            }
-
-        } catch (err) {
-            console.error("Login error:", err);
-            setError("An unexpected error occurred. Please try again.");
-        } finally {
-            setIsLoading(false);
-        }
-    };
+    // Redirect to dashboard
+    window.location.href = "/dashboard"; 
+  } catch (err) {
+    console.error("Login error:", err);
+    setError(err.response?.data?.msg || "Invalid credentials or server error");
+  } finally {
+    setIsLoading(false);
+  }
+};
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-purple-100 p-4">
+        <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-indigo-50 to-purple-100 p-4">
             <div className="bg-white rounded-3xl shadow-xl p-8 sm:p-10 w-full max-w-md border border-gray-100 transition-all duration-300 hover:shadow-2xl">
                 {/* Logo and Title */}
                 <div className="flex flex-col items-center mb-8">

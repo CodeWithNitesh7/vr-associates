@@ -4,7 +4,7 @@ export default function About() {
     return (
         <section
             id="about"
-            className="py-16 md:py-24 bg-gradient-to-br from-blue-50 via-white to-blue-100"
+            className="py-16 md:py-24 bg-linear-to-br from-blue-50 via-white to-blue-100"
         >
             <div className="container mx-auto px-4 sm:px-6 lg:px-12 text-center">
                 {/* Heading */}

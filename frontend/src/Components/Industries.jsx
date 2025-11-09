@@ -57,7 +57,7 @@ export default function Industries() {
   return (
     <section
       id="industries"
-      className="py-16 sm:py-20 bg-gradient-to-b from-white via-blue-50 to-blue-100"
+      className="py-16 sm:py-20 bg-linear-to-b from-white via-blue-50 to-blue-100"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 text-center">
         {/* 🟦 Section Header */}

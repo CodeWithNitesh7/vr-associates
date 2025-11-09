@@ -33,7 +33,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-16 md:py-24 bg-gradient-to-b from-white via-blue-50 to-blue-100"
+      className="py-16 md:py-24  bg-linear-to-b from-white via-blue-50 to-blue-100"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">

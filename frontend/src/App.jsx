@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import ProtectedRoute from "./Pages/Dashboard/Components/protectRoute.jsx";
 // 🏠 Pages
 import Home from "./Pages/Home";
 import Dashboard from "./Pages/Dashboard/Dashboard.jsx";
@@ -12,7 +12,7 @@ import AdminLogin from "./Pages/AdminLogin";
 import DigitalMarketing from "./Pages/Services/DigitalMarketing";
 import Permanents from "./Pages/Services/Permanents";
 import ContractStaffing from "./Pages/Services/ContractStaff";
-import WebandApp from "./Pages/Services/webandApp";
+import WebandApp from "./Pages/Services/WebAndApp.jsx";
 import Websites from "./Pages/Services/Web.jsx";
 import Apps from "./Pages/Services/Apps";
 import SubscribeForm from "./Pages/Services/SubscribeForm.jsx";
@@ -22,6 +22,7 @@ import MaintenancePage from "./Pages/MaintainacePage.jsx";
 import PageNotFound from "./Pages/PageNotFound.jsx";
 import VRAssociatePrivacyPolicy from "./Pages/PrivacyPolicy.jsx";
 import VRAssociateTermsOfService from "./Pages/TermOfServices.jsx";
+import Careers from "./Components/Careers.jsx";
 
 export default function App() {
   return (
@@ -29,20 +30,27 @@ export default function App() {
       <Routes>
         {/* 🌐 Main Routes */}
         <Route path="/" element={<Home />} />
+        <Route path="/career" element={<Careers />} />
+
+
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<AdminLogin />} />
         {/* Dashboard Components  */}
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>} />
         {/* Dshboard comp   */}
         <Route path="/dash" element={<Dashboard2 />} />
 
         {/* 🚀 Services Routes */}
         <Route path="/digital-marketing" element={<DigitalMarketing />} />
         <Route path="/permanents" element={<Permanents />} />
-        <Route path="/contract-staff" element={<ContractStaffing />} />
+        <Route path="/contractsStaff" element={<ContractStaffing />} />
         <Route path="/web-and-app" element={<WebandApp />} />
         <Route path="/web" element={<Websites />} />
         <Route path="/app" element={<Apps />} />
+
+        {/* Apply form  */}
 
         {/* Maintainace */}
         <Route path="/serverdown" element={<MaintenancePage />} />
