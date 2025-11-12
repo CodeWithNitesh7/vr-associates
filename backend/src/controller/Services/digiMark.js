@@ -1,6 +1,6 @@
 import DigitalMarket from "../../models/Services/digiModel.js";
 
-// ✅ Create a new Digital Marketing service
+//   Create a new Digital Marketing service
 export const createDigitalMarket = async (req, res) => {
   try {
     const { icon, name, price, features } = req.body;
@@ -24,7 +24,7 @@ export const createDigitalMarket = async (req, res) => {
   }
 };
 
-// ✅ Get all Digital Marketing services
+//   Get all Digital Marketing services
 export const getAllDigitalMarkets = async (req, res) => {
   try {
     const services = await DigitalMarket.find();
@@ -40,7 +40,7 @@ export const getAllDigitalMarkets = async (req, res) => {
   }
 };
 
-// ✅ Get a single Digital Marketing service by ID
+//   Get a single Digital Marketing service by ID
 export const getDigitalMarketById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -59,7 +59,7 @@ export const getDigitalMarketById = async (req, res) => {
   }
 };
 
-// ✅ Update a Digital Marketing service by ID
+//   Update a Digital Marketing service by ID
 export const updateDigitalMarket = async (req, res) => {
   try {
     const { id } = req.params;
@@ -85,7 +85,7 @@ export const updateDigitalMarket = async (req, res) => {
   }
 };
 
-// ✅ Delete a Digital Marketing service by ID
+//   Delete a Digital Marketing service by ID
 export const deleteDigitalMarket = async (req, res) => {
   try {
     const { id } = req.params;

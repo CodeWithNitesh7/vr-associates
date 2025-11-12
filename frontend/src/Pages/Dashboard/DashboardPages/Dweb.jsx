@@ -4,26 +4,28 @@ import {
   getAllWebApps,
   addWebApp,
   deleteWebApp,
-} from "../../../api/Services/web&appApi.js"; // ✅ correct import paths
+  updateWebApp, //   make sure this exists in your API file
+} from "../../../api/Services/web&appApi.js";
 
 export default function DWeb() {
   const [websites, setWebsites] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [editingId, setEditingId] = useState(null); //   track which website is being edited
+
   const [newWebsite, setNewWebsite] = useState({
     title: "",
-    type: "Web", // default type
+    type: "Web",
     description: "",
     techStack: "",
     link: "",
     image: "",
   });
 
-  // ✅ Fetch all websites from backend
+  //   Fetch all websites
   const fetchWebsites = async () => {
     setLoading(true);
     try {
       const data = await getAllWebApps();
-      // your API returns array (confirmed in controller)
       setWebsites(data);
     } catch (error) {
       console.error("Error fetching websites:", error);
@@ -36,25 +38,37 @@ export default function DWeb() {
     fetchWebsites();
   }, []);
 
-  // ✅ Add a new website
-  const handleAddWebsite = async () => {
+  // Add or Update Website
+  const handleSaveWebsite = async () => {
     if (!newWebsite.title || !newWebsite.description)
       return alert("Title and description are required");
 
-    try {
-      const payload = {
-        title: newWebsite.title,
-        type: newWebsite.type,
-        description: newWebsite.description,
-        techStack: newWebsite.techStack
-          ? newWebsite.techStack.split(",").map((t) => t.trim())
-          : [],
-        link: newWebsite.link,
-        image: newWebsite.image,
-      };
+    const payload = {
+      title: newWebsite.title,
+      type: newWebsite.type,
+      description: newWebsite.description,
+      techStack: newWebsite.techStack
+        ? newWebsite.techStack.split(",").map((t) => t.trim())
+        : [],
+      link: newWebsite.link,
+      image: newWebsite.image,
+    };
 
-      const added = await addWebApp(payload);
-      setWebsites((prev) => [...prev, added]); // push new entry
+    try {
+      if (editingId) {
+        // Update mode
+        const updated = await updateWebApp(editingId, payload);
+        setWebsites((prev) =>
+          prev.map((site) => (site._id === editingId ? updated : site))
+        );
+        setEditingId(null);
+      } else {
+        // Add mode
+        const added = await addWebApp(payload);
+        setWebsites((prev) => [...prev, added]);
+      }
+
+      // Reset form after save
       setNewWebsite({
         title: "",
         type: "Web",
@@ -64,16 +78,32 @@ export default function DWeb() {
         image: "",
       });
     } catch (error) {
-      console.error("Error adding website:", error);
+      console.error("Error saving website:", error);
     }
   };
 
-  // ✅ Delete website
+  //   Edit Website (populate form)
+  const handleEdit = (site) => {
+    setEditingId(site._id);
+    setNewWebsite({
+      title: site.title,
+      type: site.type,
+      description: site.description,
+      techStack: site.techStack?.join(", ") || "",
+      link: site.link || "",
+      image: site.image || "",
+    });
+
+    // Auto scroll to top where form is
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  //   Delete Website
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this website?")) return;
     try {
       await deleteWebApp(id);
-      setWebsites(websites.filter((site) => site._id !== id));
+      setWebsites((prev) => prev.filter((site) => site._id !== id));
     } catch (error) {
       console.error("Error deleting website:", error);
     }
@@ -88,9 +118,12 @@ export default function DWeb() {
         </h1>
       </div>
 
-      {/* Add Website Form */}
+      {/* Add / Edit Website Form */}
       <div className="bg-white rounded-xl shadow-md p-6 mb-8">
-        <h2 className="text-xl font-semibold text-gray-700 mb-4">Add New Project</h2>
+        <h2 className="text-xl font-semibold text-gray-700 mb-4">
+          {editingId ? "Edit Project" : "Add New Project"}
+        </h2>
+
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
           <input
             type="text"
@@ -130,16 +163,29 @@ export default function DWeb() {
             type="text"
             placeholder="Description"
             value={newWebsite.description}
-            onChange={(e) => setNewWebsite({ ...newWebsite, description: e.target.value })}
+            onChange={(e) =>
+              setNewWebsite({ ...newWebsite, description: e.target.value })
+            }
             className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
 
         <button
-          onClick={handleAddWebsite}
-          className="mt-4 flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
+          onClick={handleSaveWebsite}
+          className={`mt-4 flex items-center gap-2 ${editingId
+              ? "bg-yellow-500 hover:bg-yellow-600"
+              : "bg-indigo-600 hover:bg-indigo-700"
+            } text-white px-4 py-2 rounded-lg transition`}
         >
-          <PlusCircle size={18} /> Add Project
+          {editingId ? (
+            <>
+              <Edit3 size={18} /> Update Project
+            </>
+          ) : (
+            <>
+              <PlusCircle size={18} /> Add Project
+            </>
+          )}
         </button>
       </div>
 
@@ -160,6 +206,7 @@ export default function DWeb() {
                 <p className="text-sm text-gray-500">{site.type}</p>
               </div>
               <p className="text-gray-600 text-sm mb-3">{site.description}</p>
+
               {site.link && (
                 <a
                   href={site.link}
@@ -173,11 +220,13 @@ export default function DWeb() {
 
               <div className="flex justify-end gap-3 mt-4">
                 <button
-                  className="p-2 rounded-lg text-gray-500 hover:text-indigo-600 transition"
+                  onClick={() => handleEdit(site)}
+                  className="p-2 rounded-lg text-gray-500 hover:text-yellow-500 transition"
                   title="Edit"
                 >
                   <Edit3 size={18} />
                 </button>
+
                 <button
                   onClick={() => handleDelete(site._id)}
                   className="p-2 rounded-lg text-gray-500 hover:text-red-600 transition"

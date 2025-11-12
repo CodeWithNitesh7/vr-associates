@@ -3,8 +3,8 @@ import { Menu } from "lucide-react";
 
 export default function Header({ onMenuClick }) {
   const handleLogout = () => {
-    sessionStorage.removeItem("token"); // clear token if used
-    window.location.href = "/login"; // redirect to login page
+    sessionStorage.removeItem("token");
+    window.location.href = "/admin";
   };
 
   return (
@@ -27,7 +27,7 @@ export default function Header({ onMenuClick }) {
 
       {/* Right Section */}
       <div className="flex items-center space-x-4 text-gray-600">
-        
+
 
         {/* Logout Button */}
         <button

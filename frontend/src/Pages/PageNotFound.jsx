@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowLeft, Search } from "lucide-react"; // ✅ using lucide-react (better and smaller)
+import { ArrowLeft, Search } from "lucide-react"; //   using lucide-react (better and smaller)
 import { useNavigate } from "react-router-dom";
 
 export default function PageNotFound() {

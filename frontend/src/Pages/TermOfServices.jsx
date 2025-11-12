@@ -117,7 +117,7 @@ const VRAssociateTermsOfService = () => {
                     </p>
                     <div className="bg-red-50 p-4 rounded-lg border border-red-200">
                         <p className="text-gray-800">
-                            <span className="font-semibold">Email:</span> <a href="mailto:support@vrassociate.com" className="text-red-600 hover:text-red-800">[Insert Support Email Address]</a>
+                            <span className="font-semibold">Email:</span> <a className="text-red-600 hover:text-red-800">vrassociates.io</a>
                         </p>
                     </div>
                 </section>

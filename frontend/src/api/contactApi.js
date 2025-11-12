@@ -1,6 +1,6 @@
 import axiosInstance from "./axiosInstance";
 
-// ✅ Submit contact message
+//   Submit contact message
 export const submitContact = async (data) => {
   const res = await axiosInstance.post("/contact/submit-message", data);
   return res.data;

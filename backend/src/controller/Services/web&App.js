@@ -1,6 +1,6 @@
 import WebAppDev from "../../models/Services/web&App.js";
 
-// ✅ Create a new Web & App Development project
+//   Create a new Web & App Development project
 export const createWebAppDev = async (req, res) => {
   try {
     const { title, type, image, description, techStack, link } = req.body;
@@ -29,7 +29,7 @@ export const createWebAppDev = async (req, res) => {
   }
 };
 
-// ✅ Get all Web & App Development projects
+//   Get all Web & App Development projects
 export const getAllWebAppDev = async (req, res) => {
   try {
     const projects = await WebAppDev.find();
@@ -42,7 +42,7 @@ export const getAllWebAppDev = async (req, res) => {
   }
 };
 
-// ✅ Get a single Web & App Development project by ID
+//   Get a single Web & App Development project by ID
 export const getWebAppDevById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -61,7 +61,7 @@ export const getWebAppDevById = async (req, res) => {
   }
 };
 
-// ✅ Update Web & App Development project by ID
+//   Update Web & App Development project by ID
 export const updateWebAppDev = async (req, res) => {
   try {
     const { id } = req.params;
@@ -82,7 +82,7 @@ export const updateWebAppDev = async (req, res) => {
   }
 };
 
-// ✅ Delete Web & App Development project by ID
+//   Delete Web & App Development project by ID
 export const deleteWebAppDev = async (req, res) => {
   try {
     const { id } = req.params;

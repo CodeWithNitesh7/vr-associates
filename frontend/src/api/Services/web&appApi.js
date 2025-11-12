@@ -1,7 +1,7 @@
 // frontend/src/api/webAppApi.js
 import axiosInstance from "../axiosInstance"; // Adjust the path if needed
 
-// ✅ Get all web/app entries (for overview dashboard)
+//   Get all web/app entries (for overview dashboard)
 export const getAllWebApps = async () => {
   try {
     const response = await axiosInstance.get("/allServices/get-web-app-dev");

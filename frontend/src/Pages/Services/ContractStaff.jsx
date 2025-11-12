@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { getAllContractStaff } from "../../api/Services/contractStaffapi.js"; // ✅ adjust path if needed
+import { getAllContractStaff } from "../../api/Services/contractStaffapi.js"; //   adjust path if needed
+import { useNavigate } from "react-router-dom";
 
 export default function ContractStaffing() {
+  const naviagte = useNavigate();
   const [contractJobs, setContractJobs] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -43,7 +45,7 @@ export default function ContractStaffing() {
     );
   }
 
-  // ✅ Main UI (same as your original static version)
+  //   Main UI (same as your original static version)
   return (
     <div className="min-h-screen bg-white p-8">
       <div className="max-w-4xl mx-auto">
@@ -112,7 +114,9 @@ export default function ContractStaffing() {
               </div>
 
               {/* Apply Button */}
-              <button className="mt-5 w-full bg-sky-600 text-white py-2.5 rounded-lg font-semibold hover:bg-sky-700 transition duration-150 shadow-lg">
+              <button
+                onClick={() => naviagte('/apply')}
+                className="mt-5 w-full bg-sky-600 text-white py-2.5 rounded-lg font-semibold hover:bg-sky-700 transition duration-150 shadow-lg">
                 Apply for this Contract Role
               </button>
             </div>

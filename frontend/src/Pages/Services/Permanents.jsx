@@ -42,7 +42,7 @@
 
 // export default function Permanents() {
 //     return (
-        
+
 //         <div className="min-h-screen bg-gray-50 p-8">
 //             <div className="max-w-4xl mx-auto">
 
@@ -129,9 +129,12 @@
 
 
 import React, { useEffect, useState } from "react";
-import { getAllPermanentStaff } from "../../api/Services/permanentStaffApi.js"; // ✅ correct import
+import { getAllPermanentStaff } from "../../api/Services/permanentStaffApi.js"; //   correct import
+import { useNavigate } from "react-router-dom";
 
 export default function Permanents() {
+  const naviagte = useNavigate();
+
   const [permanentJobs, setPermanentJobs] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -173,7 +176,7 @@ export default function Permanents() {
     );
   }
 
-  // ✅ Main UI (unchanged)
+  //   Main UI (unchanged)
   return (
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-4xl mx-auto">
@@ -236,7 +239,9 @@ export default function Permanents() {
               </div>
 
               {/* Apply Button */}
-              <button className="mt-5 w-full bg-sky-600 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition duration-150 shadow-md">
+              <button
+                onClick={() => naviagte('/apply')}
+                className="mt-5 w-full bg-sky-600 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition duration-150 shadow-md">
                 Apply Now
               </button>
             </div>

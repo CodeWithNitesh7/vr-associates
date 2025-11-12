@@ -23,34 +23,40 @@ import PageNotFound from "./Pages/PageNotFound.jsx";
 import VRAssociatePrivacyPolicy from "./Pages/PrivacyPolicy.jsx";
 import VRAssociateTermsOfService from "./Pages/TermOfServices.jsx";
 import Careers from "./Components/Careers.jsx";
+import CloudServices from "./Pages/Services/CloudServices.jsx";
+import ApplyForm from "./Components/ApplyForm.jsx";
 
 export default function App() {
   return (
     <Router>
       <Routes>
-        {/* 🌐 Main Routes */}
+        {/*  Main Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/career" element={<Careers />} />
 
 
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
+
+
         <Route path="/admin" element={<AdminLogin />} />
         {/* Dashboard Components  */}
         <Route path="/dashboard" element={<ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>} />
+          <Dashboard />
+        </ProtectedRoute>} />
         {/* Dshboard comp   */}
         <Route path="/dash" element={<Dashboard2 />} />
 
-        {/* 🚀 Services Routes */}
+        {/* Services Routes */}
         <Route path="/digital-marketing" element={<DigitalMarketing />} />
         <Route path="/permanents" element={<Permanents />} />
         <Route path="/contractsStaff" element={<ContractStaffing />} />
         <Route path="/web-and-app" element={<WebandApp />} />
         <Route path="/web" element={<Websites />} />
         <Route path="/app" element={<Apps />} />
+        <Route path="/cloud" element={<CloudServices />} />
 
         {/* Apply form  */}
+        <Route path="/apply" element={<ApplyForm />} />
 
         {/* Maintainace */}
         <Route path="/serverdown" element={<MaintenancePage />} />
@@ -60,7 +66,7 @@ export default function App() {
         {/* privacypolish and term of services */}
 
         <Route path="/privacy" element={<VRAssociatePrivacyPolicy />} />
-        <Route path="/Term-and-conditions" element={<VRAssociateTermsOfService />} />
+        <Route path="/term&conditions" element={<VRAssociateTermsOfService />} />
 
       </Routes>
     </Router>

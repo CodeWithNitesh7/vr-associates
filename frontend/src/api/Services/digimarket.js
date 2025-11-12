@@ -1,7 +1,7 @@
 // frontend/src/api/Services/digitalMarketApi.js
 import axiosInstance from "../axiosInstance.js";
 
-// ✅ Get all Digital Marketing plans
+//   Get all Digital Marketing plans
 export const getAllDigitalMarkets = async () => {
   try {
     const response = await axiosInstance.get("/allServices/get-digital-marketing");
@@ -12,7 +12,7 @@ export const getAllDigitalMarkets = async () => {
   }
 };
 
-// ✅ Add a new Digital Marketing plan
+//   Add a new Digital Marketing plan
 export const addDigitalMarket = async (payload) => {
   try {
     const response = await axiosInstance.post("/allServices/add-digital-marketing", payload);
@@ -23,7 +23,7 @@ export const addDigitalMarket = async (payload) => {
   }
 };
 
-// ✅ Update a Digital Marketing plan
+//   Update a Digital Marketing plan
 export const updateDigitalMarket = async (id, payload) => {
   try {
     const response = await axiosInstance.put(`/allServices/update-digital-marketing/${id}`, payload);
@@ -34,7 +34,7 @@ export const updateDigitalMarket = async (id, payload) => {
   }
 };
 
-// ✅ Delete a Digital Marketing plan
+//   Delete a Digital Marketing plan
 export const deleteDigitalMarket = async (id) => {
   try {
     const response = await axiosInstance.delete(`/allServices/delete-digital-marketing/${id}`);

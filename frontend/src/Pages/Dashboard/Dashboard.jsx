@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Sidebar from "./Components/Sidebar";
-import Header from "./Components/Header"; // ✅ Corrected import
+import Header from "./Components/Header"; //   Corrected import
 
 // Import all your dashboard components
 import Dclients from "./DashboardPages/Dclient";
-import Dservices from "./DashboardPages/Dservices";
+// import Dservices from "./DashboardPages/Dservices";
 import Dweb from "./DashboardPages/Dweb";
 import Dapp from "./DashboardPages/Dapp";
 import Dpermanent from "./DashboardPages/Dpermanent";
@@ -17,19 +17,19 @@ export default function Dashboard() {
     const [activePage, setActivePage] = useState("dashboard");
 
     const handleLogout = () => {
-  sessionStorage.removeItem("adminToken");
-  sessionStorage.removeItem("adminInfo");
-  window.location.href = "/admin-login";
-};
+        sessionStorage.removeItem("adminToken");
+        sessionStorage.removeItem("adminInfo");
+        window.location.href = "/admin";
+    };
 
 
-    // ✅ Function to render selected content dynamically
+    //   Function to render selected content dynamically
     const renderContent = () => {
         switch (activePage) {
             case "clients":
                 return <Dclients />;
-            case "services":
-                return <Dservices />;
+            // case "services":
+            //     return <Dservices />;
             case "website":
                 return <Dweb />;
             case "app":

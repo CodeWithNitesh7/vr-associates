@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Mail,
   Phone,
@@ -8,11 +9,11 @@ import {
   Twitter,
   ArrowRight,
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { href, useNavigate } from "react-router-dom";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const navigate = useNavigate(); // ✅ fixed spelling (was 'naviagte')
+  const navigate = useNavigate(); //   fixed spelling (was 'naviagte')
 
   // Quick navigation links
   const quickLinks = [
@@ -22,6 +23,11 @@ export default function Footer() {
     { name: "Careers", href: "#careers" },
     { name: "Blog", href: "#blog" },
   ];
+
+  const bottomLinks = [
+    { name: "Privacy Policy", path: "/privacy" },
+    { name: "Terms of Service", path: "/term&conditions" }
+  ]
 
   // Service navigation links
   const serviceLinks = [
@@ -143,12 +149,15 @@ export default function Footer() {
             © {currentYear} <span className="font-semibold text-white">VR Associates</span>. All rights reserved.
           </p>
           <div className="flex space-x-6">
-            <a href="#privacy" className="hover:text-teal-400 transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#terms" className="hover:text-teal-400 transition-colors">
-              Terms of Service
-            </a>
+            {bottomLinks.map((link, index) => (
+              <Link
+                key={index}
+                to={link.path}
+                className="hover:text-teal-400 transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

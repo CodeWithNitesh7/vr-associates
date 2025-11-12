@@ -14,17 +14,17 @@ const seedOwner = async () => {
     // Create owner with plain password
     const owner = new Owner({
       name: "Vinay Singh",
-      email: "rampc45.07@gmail.com",
+      email: "niteshgupta0985@gmail.com",
       password: "vinay105@", // plain password
       role: "owner",
     });
 
     await owner.save(); // pre('save') will hash the password automatically
 
-    console.log("✅ Owner created:", owner.email);
+    console.log("  Owner created:", owner.email);
     process.exit(0);
   } catch (error) {
-    console.log("❌ Error creating owner:", error);
+    console.log(" Error creating owner:", error);
     process.exit(1);
   }
 };

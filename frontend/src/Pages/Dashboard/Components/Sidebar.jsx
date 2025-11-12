@@ -4,7 +4,7 @@ import { LayoutDashboard, Zap, Users, Briefcase, Mail } from "lucide-react";
 export default function Sidebar({ isOpen, onMenuClick, activeItem }) {
     const sidebarItems = [
         { id: "dashboard", label: "Overview", icon: LayoutDashboard, color: "text-indigo-400" },
-        { id: "services", label: "Services", icon: Zap, color: "text-emerald-400" },
+        // { id: "services", label: "Services", icon: Zap, color: "text-emerald-400" },
         { id: "clients", label: "Clients", icon: Users, color: "text-cyan-400" },
         { id: "app", label: "App", icon: Briefcase, color: "text-amber-400" },
         { id: "marketing", label: "Marketing", icon: Briefcase, color: "text-amber-400" },
@@ -25,8 +25,8 @@ export default function Sidebar({ isOpen, onMenuClick, activeItem }) {
                         key={item.id}
                         onClick={() => onMenuClick(item.id)}
                         className={`flex items-center w-full p-3 rounded-xl transition-all duration-300 group ${activeItem === item.id
-                                ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/30 scale-[1.02]"
-                                : "text-gray-400 hover:bg-gray-800 hover:text-white hover:scale-[1.02]"
+                            ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/30 scale-[1.02]"
+                            : "text-gray-400 hover:bg-gray-800 hover:text-white hover:scale-[1.02]"
                             }`}
                     >
                         <item.icon

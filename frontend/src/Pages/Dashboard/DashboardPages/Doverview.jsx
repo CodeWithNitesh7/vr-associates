@@ -9,15 +9,15 @@ import {
   Bell,
 } from "lucide-react";
 
-// ✅ Import your APIs
-import { getAllServices } from "../../../api/serviceApi.js";
+//   Import your APIs
+// import { getAllServices } from "../../../api/serviceApi.js";
 import { getAllClients } from "../../../api/Services/clientApi.js";
 import { getAllWebApps } from "../../../api/Services/web&appApi.js";
-import { getAllContacts } from "../../../api/contactApi.js"; // ✅ for leads/messages
+import { getAllContacts } from "../../../api/contactApi.js"; //   for leads/messages
 
 export default function Doverview() {
   const [stats, setStats] = useState({
-    services: 0,
+    services: 6,
     clients: 0,
     websites: 0,
     apps: 0,
@@ -26,26 +26,26 @@ export default function Doverview() {
 
   const [notifications, setNotifications] = useState([]);
 
-  // ✅ Fetch dynamic stats from APIs
+  //   Fetch dynamic stats from APIs
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const [services, clients, webApps, contacts] = await Promise.all([
-          getAllServices(),
+        const [clients, webApps, contacts] = await Promise.all([
+          // getAllServices(),
           getAllClients(),
           getAllWebApps(),
           getAllContacts(),
         ]);
 
         setStats({
-          services: services?.length || 0,
+          // services: services?.length || 0,
           clients: clients?.length || 0,
           websites: webApps?.filter((item) => item.type === "Web").length || 0,
           apps: webApps?.filter((item) => item.type === "App").length || 0,
           leads: contacts?.length || 0,
         });
 
-        // ✅ Example notifications (dynamic suggestion)
+        //   Example notifications (dynamic suggestion)
         setNotifications([
           { id: 1, message: `Fetched ${clients.length} clients`, time: "Just now" },
           { id: 2, message: `Fetched ${webApps.length} web/app projects`, time: "Just now" },

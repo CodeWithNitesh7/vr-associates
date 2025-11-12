@@ -1,6 +1,6 @@
 import PermanentStaff from "../../models/Services/permanentModel.js";
 
-// ✅ Create a new Permanent Job
+//   Create a new Permanent Job
 export const createPermanentStaff = async (req, res) => {
   try {
     const { title, company, location, salary, description, urgent } = req.body;
@@ -33,7 +33,7 @@ export const createPermanentStaff = async (req, res) => {
   }
 };
 
-// ✅ Get all Permanent Jobs
+//   Get all Permanent Jobs
 export const getAllPermanentStaff = async (req, res) => {
   try {
     const jobs = await PermanentStaff.find();
@@ -49,7 +49,7 @@ export const getAllPermanentStaff = async (req, res) => {
   }
 };
 
-// ✅ Get a single Permanent Job by ID
+//   Get a single Permanent Job by ID
 export const getPermanentStaffById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -68,7 +68,7 @@ export const getPermanentStaffById = async (req, res) => {
   }
 };
 
-// ✅ Update Permanent Job by ID
+//   Update Permanent Job by ID
 export const updatePermanentStaff = async (req, res) => {
   try {
     const { id } = req.params;
@@ -94,7 +94,7 @@ export const updatePermanentStaff = async (req, res) => {
   }
 };
 
-// ✅ Delete Permanent Job by ID
+//   Delete Permanent Job by ID
 export const deletePermanentStaff = async (req, res) => {
   try {
     const { id } = req.params;

@@ -1,6 +1,6 @@
 import Client from "../models/clients.js";
 
-// ✅ Add a new client
+//   Add a new client
 export const addClient = async (req, res) => {
   try {
     const { name, company, email, project, logo, status, notes } = req.body;
@@ -18,7 +18,7 @@ export const addClient = async (req, res) => {
   }
 };
 
-// ✅ Get all clients
+//   Get all clients
 export const getAllClients = async (req, res) => {
   try {
     const clients = await Client.find();
@@ -32,7 +32,7 @@ export const getAllClients = async (req, res) => {
   }
 };
 
-// ✅ Get client by ID
+//   Get client by ID
 export const getClientById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -47,7 +47,7 @@ export const getClientById = async (req, res) => {
   }
 };
 
-// ✅ Update a client by ID
+//   Update a client by ID
 export const updateClient = async (req, res) => {
   try {
     const { id } = req.params;
@@ -64,7 +64,7 @@ export const updateClient = async (req, res) => {
   }
 };
 
-// ✅ Delete a client by ID
+//   Delete a client by ID
 export const deleteClient = async (req, res) => {
   try {
     const { id } = req.params;

@@ -116,7 +116,7 @@ export default function Clients() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-linear-to-b from-white via-blue-50 to-blue-100">
+    <section id="clients" className="py-16 md:py-24 bg-linear-to-b from-white via-blue-50 to-blue-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-10 text-center">
         {/* Header */}
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-sky-500 mb-6">

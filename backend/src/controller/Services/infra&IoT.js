@@ -1,6 +1,6 @@
 import InfraIoT from "../../models/Services/infraModel.js";
 
-// ✅ Create a new Infra & IoT service
+//   Create a new Infra & IoT service
 export const createInfraIoT = async (req, res) => {
   try {
     const { icon, name, description } = req.body;
@@ -24,7 +24,7 @@ export const createInfraIoT = async (req, res) => {
   }
 };
 
-// ✅ Get all Infra & IoT services
+//   Get all Infra & IoT services
 export const getAllInfraIoT = async (req, res) => {
   try {
     const services = await InfraIoT.find();
@@ -40,7 +40,7 @@ export const getAllInfraIoT = async (req, res) => {
   }
 };
 
-// ✅ Get a single Infra & IoT service by ID
+//   Get a single Infra & IoT service by ID
 export const getInfraIoTById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -59,7 +59,7 @@ export const getInfraIoTById = async (req, res) => {
   }
 };
 
-// ✅ Update Infra & IoT service by ID
+//   Update Infra & IoT service by ID
 export const updateInfraIoT = async (req, res) => {
   try {
     const { id } = req.params;
@@ -83,7 +83,7 @@ export const updateInfraIoT = async (req, res) => {
   }
 };
 
-// ✅ Delete Infra & IoT service by ID
+//   Delete Infra & IoT service by ID
 export const deleteInfraIoT = async (req, res) => {
   try {
     const { id } = req.params;

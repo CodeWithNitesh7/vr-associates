@@ -12,7 +12,7 @@ export default function Dmarketing() {
   const [newPlan, setNewPlan] = useState({ name: "", price: "", features: "" });
   const [isAdding, setIsAdding] = useState(false);
 
-  // ✅ Fetch all plans on component mount
+  //   Fetch all plans on component mount
   useEffect(() => {
     const fetchPlans = async () => {
       setLoading(true);
@@ -132,9 +132,9 @@ export default function Dmarketing() {
               ))}
             </ul>
 
-            <button className="w-full mt-6 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-medium transition">
+            {/* <button className="w-full mt-6 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-medium transition">
               Choose {plan.name}
-            </button>
+            </button> */}
           </div>
         ))}
       </div>

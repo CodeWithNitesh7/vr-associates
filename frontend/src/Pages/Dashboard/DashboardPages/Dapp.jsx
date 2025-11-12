@@ -36,7 +36,7 @@ export default function Dapp() {
   }, []);
 
   const handleSaveApp = async () => {
-    // ✅ Validation
+    //   Validation
     if (!newApp.title || !newApp.type || !newApp.description) {
       alert("Please fill all required fields (Title, Type, Description)");
       return;

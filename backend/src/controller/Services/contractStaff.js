@@ -1,6 +1,6 @@
 import ContractStaff from "../../models/Services/contractModel.js";
 
-// ✅ Create a new contract job
+//   Create a new contract job
 export const createContractStaff = async (req, res) => {
   try {
     const { title, company, duration, compensation, location, urgent, description } = req.body;
@@ -34,7 +34,7 @@ export const createContractStaff = async (req, res) => {
   }
 };
 
-// ✅ Get all contract jobs
+//   Get all contract jobs
 export const getAllContractStaff = async (req, res) => {
   try {
     const jobs = await ContractStaff.find();
@@ -50,7 +50,7 @@ export const getAllContractStaff = async (req, res) => {
   }
 };
 
-// ✅ Get a single contract job by ID
+//   Get a single contract job by ID
 export const getContractStaffById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -69,7 +69,7 @@ export const getContractStaffById = async (req, res) => {
   }
 };
 
-// ✅ Update contract job by ID
+//   Update contract job by ID
 export const updateContractStaff = async (req, res) => {
   try {
     const { id } = req.params;
@@ -93,7 +93,7 @@ export const updateContractStaff = async (req, res) => {
   }
 };
 
-// ✅ Delete contract job by ID
+//   Delete contract job by ID
 export const deleteContractStaff = async (req, res) => {
   try {
     const { id } = req.params;
