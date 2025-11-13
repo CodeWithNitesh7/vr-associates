@@ -11,7 +11,7 @@ export default function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Login Data:", formData);
-        // 🔹 Add your API call here (e.g. axios.post("/api/auth/login", formData))
+        //   Add your API call here (e.g. axios.post("/api/auth/login", formData))
     };
 
     return (

@@ -1,11 +1,10 @@
-// models/Services/jobApplication.js
 import mongoose from "mongoose";
 
 const jobApplicationSchema = new mongoose.Schema(
   {
     jobTitle: {
       type: String,
-      default: "", // Optional
+      default: "",
       trim: true,
     },
     fullName: {
@@ -29,7 +28,11 @@ const jobApplicationSchema = new mongoose.Schema(
     },
     resume: {
       type: String,
-      required: [true, "Resume file is required"],
+      required: [true, "Resume file is required"], // now stores Cloudinary URL
+    },
+    cloudinaryId: {
+      type: String,
+      required: true, // needed for deletion
     },
     status: {
       type: String,

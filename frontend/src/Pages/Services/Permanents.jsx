@@ -145,7 +145,7 @@ export default function Permanents() {
         const data = await getAllPermanentStaff();
         setPermanentJobs(data);
       } catch (error) {
-        console.error("❌ Error fetching Permanent Jobs:", error);
+        console.error("  Error fetching Permanent Jobs:", error);
       } finally {
         setLoading(false);
       }

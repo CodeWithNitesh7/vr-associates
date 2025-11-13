@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CloudArrowUpIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline';
-import { submitJobApplication } from '../api/Services/applyPermanentApi.js'; // ✅ Updated to actual API file
+import { submitJobApplication } from '../api/Services/applyPermanentApi.js'; //   Updated to actual API file
 
 export default function ApplyForm() {
   const [formData, setFormData] = useState({
@@ -38,7 +38,7 @@ export default function ApplyForm() {
 
       // 📡 Call the API
       const res = await submitJobApplication(data);
-      console.log("✅ Application submitted:", res);
+      console.log("  Application submitted:", res);
 
       setStatus('success');
       setFormData({
@@ -48,7 +48,7 @@ export default function ApplyForm() {
         resume: null,
       });
     } catch (error) {
-      console.error("❌ Error submitting application:", error);
+      console.error("  Error submitting application:", error);
       setStatus('error');
     } finally {
       setIsSubmitting(false);

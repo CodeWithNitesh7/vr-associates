@@ -19,7 +19,7 @@ export default function Dclients() {
   });
   const [editingClient, setEditingClient] = useState(null);
 
-  // 🔹 Fetch clients from backend
+  //   Fetch clients from backend
   useEffect(() => {
     const fetchClients = async () => {
       setLoading(true);
@@ -35,7 +35,7 @@ export default function Dclients() {
     fetchClients();
   }, []);
 
-  // 🔹 Add a new client
+  //   Add a new client
   const handleAddClient = async () => {
     if (!newClient.name || !newClient.company || !newClient.email || !newClient.project) {
       alert("Please fill all required fields!");
@@ -51,7 +51,7 @@ export default function Dclients() {
     }
   };
 
-  // 🔹 Delete client
+  //   Delete client
   const handleDelete = async (id) => {
     try {
       await deleteClient(id);
@@ -61,7 +61,7 @@ export default function Dclients() {
     }
   };
 
-  // 🔹 Edit Client
+  //   Edit Client
   const handleEdit = (client) => {
     setEditingClient(client);
     setNewClient({
@@ -73,7 +73,7 @@ export default function Dclients() {
     });
   };
 
-  // 🔹 Update Client
+  //   Update Client
   const handleUpdateClient = async () => {
     if (!editingClient) return;
     try {

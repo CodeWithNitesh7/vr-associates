@@ -14,7 +14,7 @@ export default function ContractStaffing() {
         const data = await getAllContractStaff();
         setContractJobs(data || []);
       } catch (error) {
-        console.error("❌ Error fetching Contract Jobs:", error);
+        console.error("  Error fetching Contract Jobs:", error);
       } finally {
         setLoading(false);
       }

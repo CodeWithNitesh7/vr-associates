@@ -116,7 +116,7 @@
 //               ? 'bg-green-100 text-green-800'
 //               : 'bg-red-100 text-red-800'
 //               }`}>
-//               {submissionStatus.startsWith('success') ? '  Your resume has been submitted successfully!' : `❌ Error: ${submissionStatus.replace('error:', '').trim()}`}
+//               {submissionStatus.startsWith('success') ? '  Your resume has been submitted successfully!' : `  Error: ${submissionStatus.replace('error:', '').trim()}`}
 //             </div>
 //           )}
 
@@ -218,7 +218,7 @@ import {
   CheckCircle,
   XCircle,
 } from "lucide-react";
-import { submitJobApplication } from "../api/Services/applyPermanentApi.js"; // ✅ Correct API import
+import { submitJobApplication } from "../api/Services/applyPermanentApi.js"; //   Correct API import
 
 // Mock Data (can be fetched from backend later)
 const mockOpenPositions = [
@@ -253,24 +253,24 @@ export default function Careers() {
   const [submissionStatus, setSubmissionStatus] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // 🔹 Handle Input Changes
+  //   Handle Input Changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // 🔹 Handle Resume Upload
+  //   Handle Resume Upload
   const handleFileChange = (e) => {
     setFormData((prev) => ({ ...prev, resume: e.target.files[0] }));
   };
 
-  // 🔹 Find job title by ID
+  //   Find job title by ID
   const getPositionTitle = (id) => {
     const job = mockOpenPositions.find((p) => String(p.id) === id);
     return job ? job.title : "General Submission";
   };
 
-  // 🔹 Handle Form Submit
+  //   Handle Form Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmissionStatus(null);
@@ -292,16 +292,16 @@ export default function Careers() {
       formToSend.append("email", formData.email);
       formToSend.append("resume", formData.resume);
 
-      // ✅ Dynamically set job title or fallback
+      //   Dynamically set job title or fallback
       formToSend.append("jobTitle", getPositionTitle(formData.positionId));
 
       const res = await submitJobApplication(formToSend);
-      console.log("✅ Submission Success:", res);
+      console.log("  Submission Success:", res);
 
       setSubmissionStatus("success");
       setFormData({ name: "", email: "", positionId: "", resume: null });
     } catch (error) {
-      console.error("❌ Submission Failed:", error);
+      console.error("  Submission Failed:", error);
       setSubmissionStatus(
         `error: ${error.response?.data?.message || error.message}`
       );
