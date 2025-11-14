@@ -1,7 +1,8 @@
 import express from "express";
 import { 
   addClient, 
-  getAllClients, 
+  getAllClients,
+  getAllClientsAdmin,
   getClientById, 
   updateClient, 
   deleteClient 
@@ -12,8 +13,9 @@ const router = express.Router();
 // POST -> add a client
 router.post("/add-client", addClient);
 
-// GET -> get all clients
-router.get("/get-all-clients", getAllClients);
+
+router.get("/get-front-clients", getAllClients); // public
+router.get("/admin/get-all-clients", getAllClientsAdmin); // admin only
 
 // GET -> get client by ID
 router.get("/get-client/:id", getClientById);
