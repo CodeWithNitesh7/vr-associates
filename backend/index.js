@@ -13,6 +13,10 @@ import client from './src/routes/client.js'
 import connectDB from "./src/configs/db.js";
 import jobRoute from './src/routes/applyPermanent.js'
 import allServicesRoute from "./src/routes/allServicesRoute.js";
+import razorpayRoutes from "./src/routes/razorpayRoutes.js";
+
+
+
 
 const app = express();
 connectDB()
@@ -28,7 +32,7 @@ app.use(cors({
 
 app.use("/uploads", express.static(path.join(process.cwd(), "src", "uploads")));
 
-
+app.use("/api/razorpay", razorpayRoutes);
 app.use("/api/contact",contactRoute);
 app.use("/api/auth",adminRoute);
 app.use("/api/service",serviceRoute);
