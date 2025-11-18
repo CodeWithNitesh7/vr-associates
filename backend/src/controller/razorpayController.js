@@ -8,6 +8,7 @@ export const createOrder = async (req, res) => {
       currency: "INR",
       receipt: `receipt_${Date.now()}`,
     };
+// console.log("BODY RECEIVED:", req.body);
 
     const order = await razorpayInstance.orders.create(options);
 

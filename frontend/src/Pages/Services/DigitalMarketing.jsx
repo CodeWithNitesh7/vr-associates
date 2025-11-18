@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { CheckCircleIcon, ArrowRightIcon, StarIcon } from "@heroicons/react/24/solid";
 import { getAllDigitalMarkets } from "../../api/Services/digimarket.js";
+import { createOrder, verifyPayment } from "../../api/razorpayApi.js";
+import { useNavigate } from "react-router-dom";
 
 export default function SubscribeForm() {
   const [plans, setPlans] = useState([]);
@@ -13,7 +15,7 @@ export default function SubscribeForm() {
     company: "",
     paymentMethod: "Credit Card",
   });
-
+const navigate = useNavigate();
   // 🟢 Fetch all plans dynamically from backend
   useEffect(() => {
     const fetchPlans = async () => {
@@ -34,11 +36,94 @@ export default function SubscribeForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Subscription submitted:", { plan: selectedPlan, data: formData });
-    alert(`Thank you for choosing the ${selectedPlan} plan! We'll be in touch soon.`);
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!selectedPlan) {
+    alert("Please select a plan before proceeding");
+    return;
+  }
+
+  const planData = plans.find((p) => p.name === selectedPlan);
+  if (!planData) {
+    alert("Plan not found!");
+    return;
+  }
+
+  try {
+    // STEP 1: Create Order
+// CLEAN PRICE → removes ₹, $, commas, /-, spaces, etc.
+const cleanAmount = Number(planData.price.replace(/[^0-9.]/g, ""));
+
+console.log("Price:", planData.price, "Clean:", cleanAmount);
+
+const orderRes = await createOrder(cleanAmount);
+
+
+    if (!orderRes || !orderRes.order) {
+      console.log("Order response:", orderRes);
+      alert("Failed to create order");
+      return;
+    }
+
+    const order = orderRes.order;
+
+    // Razorpay Options
+    const options = {
+      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+      amount: order.amount,
+      currency: order.currency,
+      name: "VR Associates",
+      description: `${selectedPlan} Subscription`,
+      order_id: order.id,
+
+      // PAYMENT SUCCESS HANDLER
+      handler: async function (response) {
+        try {
+          const verifyRes = await verifyPayment({
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+          });
+
+          if (verifyRes.success) {
+            navigate("/payment-success");
+          } else {
+            alert("Payment verification failed!");
+          }
+        } catch (err) {
+          console.log("Verification error:", err);
+          alert("Error verifying payment");
+        }
+      },
+
+      prefill: {
+        name: formData.fullName,
+        email: formData.email,
+        contact: formData.phone,
+      },
+
+      theme: {
+        color: "#4f46e5",
+      },
+    };
+
+    // Create Razorpay Payment Object
+    const rzp = new window.Razorpay(options);
+
+    rzp.on("payment.failed", function (response) {
+      console.log("Payment Failed:", response.error);
+      alert("Payment failed!");
+    });
+
+    rzp.open();
+
+  } catch (error) {
+    console.log("Payment Error:", error);
+    alert("Something went wrong while initiating payment.");
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-50 via-white to-indigo-50 py-16 px-4 sm:px-10 font-inter">

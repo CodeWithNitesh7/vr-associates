@@ -1,7 +1,7 @@
+import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 import path from 'path'
 import cors from "cors";
 const PORT = process.env.PORT || 5000;

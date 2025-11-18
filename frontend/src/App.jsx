@@ -25,6 +25,7 @@ import VRAssociateTermsOfService from "./Pages/TermOfServices.jsx";
 import Careers from "./Components/Careers.jsx";
 import CloudServices from "./Pages/Services/CloudServices.jsx";
 import ApplyForm from "./Components/ApplyForm.jsx";
+import PaymentSuccess from "./Pages/paymentSuccess.jsx";
 
 export default function App() {
   return (
@@ -61,6 +62,8 @@ export default function App() {
         {/* Maintainace */}
         <Route path="/serverdown" element={<MaintenancePage />} />
         <Route path="*" element={<PageNotFound />} />
+        
+<Route path="/payment-success" element={<PaymentSuccess />} />
 
 
         {/* privacypolish and term of services */}
