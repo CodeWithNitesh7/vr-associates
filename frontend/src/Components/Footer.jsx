@@ -35,7 +35,7 @@ export default function Footer() {
     { name: "Digital Marketing", path: "/digital-marketing" },
     { name: "App Development", path: "/app" },
     { name: "Contract Hiring", path: "/contract-staff" },
-    { name: "Permanent Placement", path: "/permanents" },
+    { name: "Permanent Hiring ", path: "/permanents" },
     { name: "Cloud Solutions", path: "/cloud" },
     { name: "Infrastructure & IoT", path: "/iot" },
   ];

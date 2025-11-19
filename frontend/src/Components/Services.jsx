@@ -51,7 +51,7 @@ const services = [
     icon: <ShieldCheck size={40} />,
     title: "InfraStructure and IOT",
     desc: "Protecting digital assets and ensuring flawless performance through rigorous testing.",
-    route: "/cyberSecurity",
+    route: "/iot",
   },
 ];
 

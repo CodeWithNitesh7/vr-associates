@@ -26,6 +26,8 @@ import Careers from "./Components/Careers.jsx";
 import CloudServices from "./Pages/Services/CloudServices.jsx";
 import ApplyForm from "./Components/ApplyForm.jsx";
 import PaymentSuccess from "./Pages/paymentSuccess.jsx";
+import IOTServices from "./Pages/Services/IOTServices.jsx";
+import Contact from "./Components/Contact.jsx";
 
 export default function App() {
   return (
@@ -55,9 +57,11 @@ export default function App() {
         <Route path="/web" element={<Websites />} />
         <Route path="/app" element={<Apps />} />
         <Route path="/cloud" element={<CloudServices />} />
+        <Route path="/iot" element={<IOTServices />} />
 
         {/* Apply form  */}
         <Route path="/apply" element={<ApplyForm />} />
+        <Route path="/Contact" element={<Contact />} />
 
         {/* Maintainace */}
         <Route path="/serverdown" element={<MaintenancePage />} />

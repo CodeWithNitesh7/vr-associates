@@ -58,7 +58,7 @@ const cleanAmount = Number(planData.price.replace(/[^0-9.]/g, ""));
 console.log("Price:", planData.price, "Clean:", cleanAmount);
 
 const orderRes = await createOrder(cleanAmount);
-
+ 
 
     if (!orderRes || !orderRes.order) {
       console.log("Order response:", orderRes);
@@ -246,7 +246,7 @@ const orderRes = await createOrder(cleanAmount);
             </section>
 
             {/* Payment Method */}
-            <section>
+            {/* <section>
               <h3 className="text-xl font-semibold text-gray-800 mb-4">2. Payment Method</h3>
               <div className="flex flex-wrap gap-6">
                 {["Credit Card", "PayPal", "Invoice"].map((method) => (
@@ -273,7 +273,7 @@ const orderRes = await createOrder(cleanAmount);
               <p className="mt-2 text-sm text-gray-500">
                 You’ll enter your payment details securely on the next step.
               </p>
-            </section>
+            </section> */}
 
             {/* Terms */}
             <section className="pt-4 border-t">

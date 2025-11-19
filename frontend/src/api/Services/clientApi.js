@@ -1,7 +1,7 @@
 import axiosInstance from "../axiosInstance";
 
 // ============================
-// 🌐 FRONT PAGE CLIENTS (Public)
+// FRONT PAGE CLIENTS (Public)
 // ============================
 
 // Get limited client data for homepage (logo, name, testimonial, rating)
@@ -16,13 +16,13 @@ export const getFrontClients = async () => {
 };
 
 // ============================
-// 🔐 ADMIN PANEL CLIENTS (Protected)
+// ADMIN PANEL CLIENTS (Protected)
 // ============================
 
 // Get all clients (Admin)
 export const getAllClients = async () => {
   try {
-    const response = await axiosInstance.get("/clients/get-all-clients");
+    const response = await axiosInstance.get("/clients/admin/get-all-clients");
     return response.data.clients;
   } catch (error) {
     console.error("Error fetching clients:", error);
