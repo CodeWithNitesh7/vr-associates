@@ -11,6 +11,7 @@ export default function Sidebar({ isOpen, onMenuClick, activeItem }) {
         { id: "contract", label: "Contract Staff", icon: Briefcase, color: "text-amber-400" },
         { id: "website", label: "Website", icon: Briefcase, color: "text-amber-400" },
         { id: "leads", label: "Contact Leads", icon: Mail, color: "text-red-400" },
+        { id: "services", label: "Services", icon: Mail, color: "text-red-400" },
     ];
 
     return (
@@ -25,7 +26,7 @@ export default function Sidebar({ isOpen, onMenuClick, activeItem }) {
 
             <aside
                 className={`fixed lg:static top-16 left-0 h-full w-64
-                bg-gradient-to-br from-gray-900 to-gray-800 
+                bg-linear-to-br from-gray-900 to-gray-800 
                 border-r border-gray-700 shadow-xl 
                 transform ${isOpen ? "translate-x-0" : "-translate-x-full"} 
                 lg:translate-x-0 transition-transform duration-300 ease-in-out z-50`}
@@ -37,9 +38,9 @@ export default function Sidebar({ isOpen, onMenuClick, activeItem }) {
                             onClick={() => onMenuClick(item.id)}
                             className={`flex items-center w-full p-3 rounded-xl transition-all duration-300 group 
                             ${activeItem === item.id
-                                ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/30 scale-[1.02]"
-                                : "text-gray-400 hover:bg-gray-800 hover:text-white hover:scale-[1.02]"
-                            }`}
+                                    ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/30 scale-[1.02]"
+                                    : "text-gray-400 hover:bg-gray-800 hover:text-white hover:scale-[1.02]"
+                                }`}
                         >
                             <item.icon
                                 className={`w-5 h-5 mr-3 transition-colors duration-200 

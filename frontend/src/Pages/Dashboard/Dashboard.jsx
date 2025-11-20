@@ -10,6 +10,8 @@ import Dcontract from "./DashboardPages/Dcontract";
 import Dmarketing from "./DashboardPages/Dmarketing";
 import ContractLeads from "./DashboardPages/ContractLeads";
 import Doverview from "./DashboardPages/Doverview";
+import Dservices from "./DashboardPages/Dservices";
+
 
 export default function Dashboard() {
     const [activePage, setActivePage] = useState("dashboard");
@@ -35,6 +37,8 @@ export default function Dashboard() {
                 return <Dmarketing />;
             case "leads":
                 return <ContractLeads />;
+            case "services":
+                return <Dservices />;
             default:
                 return <Doverview />;
         }
@@ -42,7 +46,7 @@ export default function Dashboard() {
 
     return (
         <div className="flex h-screen bg-gray-100">
-            
+
             {/* Sidebar */}
             <Sidebar
                 isOpen={isSidebarOpen}
