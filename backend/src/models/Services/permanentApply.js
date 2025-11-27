@@ -30,10 +30,9 @@ const jobApplicationSchema = new mongoose.Schema(
       type: String,
       required: [true, "Resume file is required"], // now stores Cloudinary URL
     },
-    cloudinaryId: {
-      type: String,
-      required: true, // needed for deletion
-    },
+localPath: {
+  type: String,
+},
     status: {
       type: String,
       enum: ["Pending", "Reviewed", "Accepted", "Rejected"],
